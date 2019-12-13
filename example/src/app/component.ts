@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
+import { ApplicationRef, Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Model } from "./repository.model";
 import { Product } from "./product.model";
+import { ProductFormGroup } from "./form.model";
 
 @Component({
     selector: "app",
@@ -8,19 +10,14 @@ import { Product } from "./product.model";
 })
 export class ProductComponent {
     model: Model = new Model();
-    
-    getProduct(key: number): Product{
+    form: ProductFormGroup = new ProductFormGroup();
+
+    getProduct(key: number): Product {
         return this.model.getProduct(key);
     }
 
-    getProducts(): Product[]{
+    getProducts(): Product[] {
         return this.model.getProducts();
-    }
-
-    selectedProduct: string;
-
-    getSelected(product: Product):boolean{
-        return product.name==this.selectedProduct;
     }
 
     newProduct: Product = new Product();
@@ -33,5 +30,15 @@ export class ProductComponent {
         console.log("New Product: " + this.jsonProduct);
     }
 
-    
+    formSubmitted: boolean = false;
+
+    submitForm(form: NgForm) {
+        this.formSubmitted = true;
+        if (form.valid) {
+            this.addProduct(this.newProduct);
+            this.newProduct = new Product();
+            form.reset();
+            this.formSubmitted = false;
+        }
+    }    
 }
