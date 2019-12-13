@@ -19,6 +19,6 @@
     </table>
     <div class="from-group">
         <label>Product Name</label>
-        <input class="form-control" (input)="selectedProduct=$event.target.value" /> 
+        <input class="form-control" [(ngModel)]="selectedProduct" /> <!-- ... 輸入後會顯示在哪一欄 ... -->
     </div>
 </div>
