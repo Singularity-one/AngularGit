@@ -11,4 +11,7 @@ export class ProductComponent {
     getClasses():string{
         return this.model.getProducts().length ==5 ? "bg-success" : "bg-warning";
     }
+
+    fontSizeWithUnits: string ="30px";
+    fontSizeWithoutUnits: string="30";
 }
