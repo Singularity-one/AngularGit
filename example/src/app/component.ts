@@ -22,12 +22,12 @@ export class ProductComponent {
 
     newProduct: Product = new Product();
 
-    get jsonProduct() {
-        return JSON.stringify(this.newProduct);
+    addProduct(p: Product) {
+        this.model.saveProduct(p);
     }
 
-    addProduct(p: Product) {
-       this.model.saveProduct(p);
+    deleteProduct(key: number) {
+        this.model.deleteProduct(key);
     }
 
     formSubmitted: boolean = false;
@@ -40,5 +40,7 @@ export class ProductComponent {
             form.reset();
             this.formSubmitted = false;
         }
-    }    
+    }
+
+    showTable: boolean = true;
 }
