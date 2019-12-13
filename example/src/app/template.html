@@ -9,8 +9,9 @@
             <th>Category</th>
             <th>Price</th>
         </tr>
-        <tr *ngFor="let item of getProducts(); let i=index"> 
-            <td (mouseover)="selectedProduct=item.name">{{i+1}}</td>
+        <tr *ngFor="let item of getProducts(); let i=index"
+            [class.bg-info]="getSelected(item)"><!-- ... 高亮表示 ... -->
+            <td (mouseover)="selectedProduct=item.name">{{i+1}}</td><!-- ... 滑鼠路過會在標題顯示 ... -->
             <td>{{item.name}}</td>
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
